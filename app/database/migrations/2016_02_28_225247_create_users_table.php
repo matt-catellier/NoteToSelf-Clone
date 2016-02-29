@@ -19,6 +19,9 @@ class CreateUsersTable extends Migration {
 			$table->string('username', 320); // username is the email
 			$table->string('password', 64);
 
+			$table->string('remember_token', 100)->nullable(); // need this to logout?
+
+
 			$table->timestamps();
 		});
 	}
