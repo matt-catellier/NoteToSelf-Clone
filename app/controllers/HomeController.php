@@ -54,8 +54,14 @@ class HomeController extends BaseController {
 		return Redirect::to('login');
 	}
 
-	public function showSecure() {
-		return View::make('secure');
+	public function showSecure()
+	{
+		return View::make('notes/index');
+		// return View::make('secure');
+	}
+
+	public function showRegister() {
+
 	}
 
 }

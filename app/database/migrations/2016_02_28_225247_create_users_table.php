@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration {
 
 			$table->string('remember_token', 100)->nullable(); // need this to logout?
 
+			$table->string('confirmation_code', 320)->nullable(); // used to confirm via email...
 
 			$table->timestamps();
 		});
