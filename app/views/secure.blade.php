@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<a href="{{ URL::to('logout') }}">Logout</a>
+<a href="{{ URL::to('sessions/destroy') }}">Logout</a>
 
 </body>
 </html>

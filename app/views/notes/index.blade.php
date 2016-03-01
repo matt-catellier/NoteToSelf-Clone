@@ -1,11 +1,11 @@
 @extends('layouts.notes')
 
 @section('pagetitle')
-    <title> notes </title>
+    <title> note to self - notes </title>
 @stop
 
 @section('header')
-    <h1>Header</h1>
+    <h1>{{ Auth::user()->email }} - {{ link_to('logout', 'log out') }}</h1>
 @stop
 
 @section('notes')
@@ -43,7 +43,4 @@
     {{ Form::submit('save', $attributes = array('class'=>'col-sm-offset-3 col-sm-6 col-xs-12 btn btn-primary')) }}
 @stop
 
-@section('footer')
-    <h1>Footer</h1>
-@stop
 

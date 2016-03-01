@@ -11,7 +11,7 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <style>
-        div {
+        .header > div, .content > div {
             border: 1px solid #ccc;
         }
 
@@ -66,7 +66,9 @@
 </head>
 <body>
 <div class="header col-sm-12 clearfix">
+    <div class="col-sm-12">
     @yield('header')
+    </div>
 </div>
 
 <div class="content col-sm-12 clearfix">
