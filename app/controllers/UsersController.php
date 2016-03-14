@@ -21,7 +21,7 @@ class UsersController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create() // registration form...
 	{
 		return View::make('users/create');
 	}
@@ -43,9 +43,22 @@ class UsersController extends \BaseController {
 			return Redirect::back()->withInput()->withErrors($this->user->messages);
 		}
 
-		$this->user->save();
+		$confirmation_code = str_random(30);
 
-		return Redirect::route('users.index');
+		$user = User::create([
+			'email' => Input::get('email'),
+			'password' => Hash::make(Input::get('password')),
+			'confirmation_code' => $confirmation_code
+		]);
+
+		$user->save();
+
+		Mail::send('emails.registration', ['email'=>$this->user->email, 'confirmation_code'=>$confirmation_code ], function($message)
+		{
+			$message->to($this->user->email, $this->user->email)->subject('Registration');
+		});
+
+		return View::make('users.registration', ['email'=>$this->user->email]);
 	}
 
 

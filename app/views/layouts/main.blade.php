@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Look at me Login</title>
+    {{ HTML::style('styles/site.css') }}
     @yield('head')
 </head>
 <body>

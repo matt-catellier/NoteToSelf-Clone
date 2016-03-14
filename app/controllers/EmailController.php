@@ -17,8 +17,6 @@ class EmailController extends BaseController {
 
 	public function store()
 	{
-		// finally getting values in here...
-		// jsut need to validate and the send email
 		$this->email = Input::get('email');
 
 		$rules = array(
@@ -32,26 +30,26 @@ class EmailController extends BaseController {
 				->withErrors($validator)// send back all errors to the login form
 				->withInput(Input::all()); // send back the input (not the password) so that we can repopulate the form
 		}
-
-
 		$userExists= User::where('email', '=', $this->email)->exists();
-
 		if($userExists) {
 
 			$pass = str_random(15);
+			$confirmation_code = str_random(30);
 			// update users password
-			User::where('email', '=', $this->email)->update(array('password'=>Hash::make($pass)));
+			User::where('email', '=', $this->email)->update(array('password'=>Hash::make($pass),
+				'confirmation_code'=>$confirmation_code));
 
-			Mail::send('emails.welcome', array('pass' => $pass,'email'=>$this->email ), function($message)
+			Mail::send('emails.forgot', array('pass' => $pass,'email'=>$this->email, 'confirmation_code'=>$confirmation_code ), function($message)
 			{
-				$message->to($this->email, 'Matt')->subject('Welcome!');
+				$message->to($this->email, $this->email)->subject('Password Reset');
 			});
-			return 'email sent';
+			return View::make('emails/forgotSent', ['email' => $this->email]);
 		} else {
 			// View::make('users/forgot', ['error', 'Could not send email.  Are your sure your registered? ']);
 			return 'no user with that email';
 		}
 	}
+
 
 	public function show($id)
 	{

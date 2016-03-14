@@ -26,7 +26,7 @@
 <p>{{ Form::submit('log in') }}</p>
 {{ Form::close() }}
 
-{{ link_to('users/create', 'register') }} | {{ link_to('email', 'forgot password') }} <br> <br>
+{{ link_to('users/create', 'register') }} | {{ link_to('forgot', 'forgot password') }} <br> <br>
 <a href="http://mattcatellier.com/"> mattcatellier.com </a>
 </body>
 </html>

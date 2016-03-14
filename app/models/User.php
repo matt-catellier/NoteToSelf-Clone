@@ -11,7 +11,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	// link to a table, declare which fields you can edit
 	protected $table = 'users';
-	protected $fillable = ['email', 'password'];
+	protected $fillable = ['email', 'password', 'confirmation_code'];
 	protected $hidden = array('password', 'remember_token');
 	public $timestamps = true;
 

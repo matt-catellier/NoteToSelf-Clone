@@ -5,6 +5,6 @@
     <p> Welcome to {{ link_to('login') }}. Your new password is <b> {{$pass}} </b>. Please keep this email or write it down.</p>
     <p> To log in with new password, click link below: </p>
 
-    {{ URL::to(action('SessionsController@create') . '?' . urldecode(http_build_query(array('e' => $email)) ) ) }}
+    {{ URL::to(action('SessionsController@create') . '?' . urldecode(http_build_query(array('e' => $email, 'r' => $confirmation_code)) ) ) }}
 
 @stop

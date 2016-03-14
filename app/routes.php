@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'HomeController@showWelcome');
+Route::get('/', 'SessionsController@create');
 
 // All user create, update delete
 Route::resource('users', 'UsersController');

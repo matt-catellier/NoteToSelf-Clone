@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'noreply@note-to-self.com', 'name' => 'note-to-self'),
+	'from' => array('address' => 'noreply@note-to-self.com', 'name' => 'note-to-self admin'),
 
 	/*
 	|--------------------------------------------------------------------------
