@@ -11,7 +11,11 @@
 
 <p>
     {{ Form::label('email', 'Email Address:') }}
-    {{ Form::text('email', Input::old('email'), array('placeholder' => 'awesome@gmail.com')) }}
+    @if ($email != "")
+        {{ Form::text('email', $email, array('placeholder' => 'awesome@gmail.com')) }}
+    @else
+        {{ Form::text('email', Input::old('email'), array('placeholder' => 'awesome@gmail.com')) }}
+    @endif
 </p>
 
 <p>
@@ -22,7 +26,7 @@
 <p>{{ Form::submit('log in') }}</p>
 {{ Form::close() }}
 
-{{ link_to('users/create', 'register') }} | <a href="#"> forgot</a> <br> <br>
+{{ link_to('users/create', 'register') }} | {{ link_to('email', 'forgot password') }} <br> <br>
 <a href="http://mattcatellier.com/"> mattcatellier.com </a>
 </body>
 </html>

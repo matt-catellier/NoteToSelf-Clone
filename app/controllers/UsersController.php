@@ -95,6 +95,4 @@ class UsersController extends \BaseController {
 	{
 		//
 	}
-
-
 }

@@ -5,8 +5,12 @@
 </head>
 <body>
 
+@if($errors == null)
+        <p> {{  $errors }} </p>s
+@endif
+
 <!--  this must specify the method somehow -->
-{{ Form::open(array('url' => 'login')) }}
+{{ Form::open(array('route' => 'login')) }}
 <h1>Login</h1>
 <!-- if there are login errors, show them here -->
 <p>

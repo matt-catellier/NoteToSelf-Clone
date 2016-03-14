@@ -8,13 +8,17 @@ class SessionsController extends \BaseController {
 	}
 
 
+	// loads the form...
 	public function create()
 	{
 		if(Auth::check()) // if their logged in
 		{
 			return 'logged in';
 		}
-		return View::make('sessions.create');
+		if(!empty($_REQUEST['e'])) {
+			return View::make('sessions.create', ['email' => $_REQUEST['e']]);
+		}
+		return View::make('sessions.create', ['email' => '']);
 	}
 
 	public function store() // willl log them in...

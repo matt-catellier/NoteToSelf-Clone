@@ -22,9 +22,14 @@
 <p>
     {{ Form::label('passwordConfirm', 'Confirm Password') }}
     {{ Form::password('passwordConfirm') }}
+
     {{ $errors->first('passwordConfirm') }}
 </p>
 
+<p>
+    {{ Form::captcha() }}
+    {{ $errors->first('g-recaptcha-response') }}
+</p>
 <p>{{ Form::submit('register') }}</p>
 {{ Form::close() }}
 

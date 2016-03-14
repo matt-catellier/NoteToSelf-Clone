@@ -24,7 +24,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public static $rules = [
 		'email' => 'required|email', // email is required and is actually an email
 		'password' => 'required|min:3|max:80', // numbers and letter, more than 3 letters
-		'passwordConfirm' => 'required|same:password' // required and has to match the other password
+		'passwordConfirm' => 'required|same:password', // required and has to match the other password
+		'g-recaptcha-response' => 'required|captcha'
 	];
 
 	// create method to check if the form is valid

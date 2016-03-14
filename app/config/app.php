@@ -121,6 +121,10 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		'Anhskohbo\NoCaptcha\NoCaptchaServiceProvider', // for captcha
+		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider', // for auto complete
+		'Way\Generators\GeneratorsServiceProvider', // for way generators
+
 
 	),
 
