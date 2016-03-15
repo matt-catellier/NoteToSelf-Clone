@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     @yield('pagetitle')
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -65,32 +66,34 @@
     @yield('headers')
 </head>
 <body>
-<div class="header col-sm-12 clearfix">
-    <div class="col-sm-12">
-    @yield('header')
+<div class="wrapper">
+    <div class="header col-sm-12 clearfix">
+        <div class="col-sm-12">
+        @yield('header')
+        </div>
     </div>
-</div>
 
-<div class="content col-sm-12 clearfix">
-    <div class="notes col-sm-3 clearfix">
-        @yield('notes')
+    <div class="content col-sm-12 clearfix">
+        <div class="notes col-sm-3 clearfix">
+            @yield('notes')
+        </div>
+        <div class="websites col-sm-3 clearfix">
+            @yield('websites')
+        </div>
+        <div class="images col-sm-3 clearfix">
+            @yield('images')
+        </div>
+        <div class="tbd col-sm-3 clearfix">
+            @yield('tbd')
+        </div>
+        <div class="save col-sm-12 clearfix">
+            @yield('save')
+        </div>
     </div>
-    <div class="websites col-sm-3 clearfix">
-        @yield('websites')
-    </div>
-    <div class="images col-sm-3 clearfix">
-        @yield('images')
-    </div>
-    <div class="tbd col-sm-3 clearfix">
-        @yield('tbd')
-    </div>
-    <div class="save col-sm-12 clearfix">
-        @yield('save')
-    </div>
-</div>
 
-<div class="footer col-sm-12 clearfix">
-    @yield('footer')
+    <div class="footer col-sm-12 clearfix">
+        @yield('footer')
+    </div>
 </div>
 </body>
 </html>

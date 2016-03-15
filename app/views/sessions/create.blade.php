@@ -1,32 +1,53 @@
-<!doctype html>
-<html>
-<head>
-    <title>note to self - login</title>
-</head>
-<body>
+@extends('layouts.main')
 
-<!--  this must specify the method somehow -->
+@section('head')
+    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>--}}
+    {{ HTML::script('scripts/jquery-1.4.1.min.js') }}
+    {{ HTML::script('scripts/register.js') }}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <style>
+        .button {
+            border-bottom: none;
+        }
+    </style>
+@stop
+
+@section('content')
+ <!--  this must specify the method somehow -->
 {{ Form::open(['route'=>'sessions.store']) }}
+
 <h1> log in </h1>
-
-<p>
-    {{ Form::label('email', 'Email Address:') }}
-    @if ($email != "")
-        {{ Form::text('email', $email, array('placeholder' => 'awesome@gmail.com')) }}
-    @else
-        {{ Form::text('email', Input::old('email'), array('placeholder' => 'awesome@gmail.com')) }}
-    @endif
-</p>
-
-<p>
-    {{ Form::label('password', 'Password') }}
-    {{ Form::password('password') }}
-</p>
-
-<p>{{ Form::submit('log in') }}</p>
-{{ Form::close() }}
-
-{{ link_to('users/create', 'register') }} | {{ link_to('forgot', 'forgot password') }} <br> <br>
-<a href="http://mattcatellier.com/"> mattcatellier.com </a>
-</body>
-</html>
+<ul>
+    <li>
+        <div>
+            {{ Form::label('email', 'Email Address:') }}
+            @if ($email != "")
+                {{ Form::text('email', $email, array('placeholder' => 'awesome@gmail.com')) }}
+            @else
+                {{ Form::text('email', Input::old('email'), array('placeholder' => 'awesome@gmail.com')) }}
+            @endif
+        </div>
+    </li>
+    <li>
+        <div>
+            {{ Form::label('password', 'Password') }}
+            {{ Form::password('password') }}
+        </div>
+    </li>
+    <li class="button">
+        <div>{{ Form::submit('log in', ['class'=>'btn btn-primary']) }}</div>
+        {{ Form::close() }}
+    </li>
+    <li>
+        {{ link_to('users/create', 'register') }} | {{ link_to('forgot', 'forgot password') }}
+    </li>
+    <li>
+    <a href="http://mattcatellier.com/"> mattcatellier.com </a>
+    </li>
+</ul>
+@stop
