@@ -11,9 +11,13 @@ Route::get('logout', 'SessionsController@destroy'); // alias
 
 Route::resource('sessions', 'SessionsController');
 
-Route::get('notes', function() {
-    return View::make('notes/index');
-})->before('auth');
+//Route::get('notes', function() {
+//    return View::make('notes/index');
+//})->before('auth');
+
+
+Route::get('notes', 'NotesController@create')->before('auth');
+Route::post('notes/store', 'NotesController@store');
 
 
 Route::get('forgot', function() {

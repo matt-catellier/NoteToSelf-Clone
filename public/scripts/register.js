@@ -13,7 +13,7 @@ $(document).ready(function() {
     errorMsg.hide();
 
     $("#submit").click(function(e) {
-        e.preventDefault();
+
         resetFields();
         var emptyfields = $("#email, #password, #passwordConfirm ");
         emptyfields.each(function() {
@@ -32,6 +32,7 @@ $(document).ready(function() {
         validatePasswordConfirm()
 
         if(error) {
+            e.preventDefault();
             errorMsg.show()
         } else {
             errorMsg.hide()
@@ -157,7 +158,7 @@ function validatePassword() {
 
 function validatePasswordConfirm() {
     var password = $("#passwordConfirm");
-    if(password.val() != $("#passwd").val()){
+    if(password.val() != $("#password").val()){
         if(error == false){
             errorMsg.text("no matchy passy");
             error = true;

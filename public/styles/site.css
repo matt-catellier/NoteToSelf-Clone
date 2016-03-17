@@ -54,3 +54,7 @@ label {
 .required {
     border: solid 1px #f00
 }
+
+.button {
+    border-bottom: none;
+}

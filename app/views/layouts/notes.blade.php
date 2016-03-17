@@ -44,25 +44,7 @@
         }
     </style>
 
-    <script>
-        // script to resize all divs to same height
-        $( function() {
-            var divs = $('.content > div');
-            console.log(divs);
 
-            var height = 0;
-            for(var i = 0; i < divs.length; i++) {
-                if( divs[i].clientHeight > height ) {
-                    height = divs[i].clientHeight
-                }
-            }
-            console.log(height);
-
-            for(var i = 0; i < divs.length; i++) {
-                divs[i].style.height = height
-            }
-        })
-    </script>
     @yield('headers')
 </head>
 <body>
@@ -95,5 +77,24 @@
         @yield('footer')
     </div>
 </div>
+<script>
+    // script to resize all divs to same height
+    $( function() {
+        var divs = $('.content > div.col-sm-3');
+        console.log(divs);
+
+        var height = 0;
+        for(var i = 0; i < divs.length; i++) {
+            if( divs[i].clientHeight > height ) {
+                height = divs[i].clientHeight
+            }
+        }
+        console.log(height);
+
+        for(var i = 0; i < divs.length; i++) {
+            divs[i].style.height = height
+        }
+    })
+</script>
 </body>
 </html>

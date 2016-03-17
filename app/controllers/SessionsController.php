@@ -13,7 +13,8 @@ class SessionsController extends \BaseController {
 	{
 		if(Auth::check()) // if their logged in
 		{
-			return 'logged in';
+			// logout and send to login page...
+			return 'You are already logged in?';
 		}
 		if(!empty($_REQUEST['r']) && !empty($_REQUEST['e'])) {
 			$email = $_REQUEST['e'];
@@ -39,11 +40,11 @@ class SessionsController extends \BaseController {
 
 	public function store() // willl log them in...
 	{
-		if(Auth::attempt(Input::only('email', 'password'))) {
+		if(Auth::attempt(Input::only('email', 'password'), true)) {
 			// if successful laravel will create a session and we can access it via Auth::user()
 			return Redirect::to('/notes');
 		} else {
-			return Redirect::back()->withInput();
+			return View::make('sessions/failedLogin');
 		}
 	}
 

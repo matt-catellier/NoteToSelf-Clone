@@ -46,7 +46,7 @@ class EmailController extends BaseController {
 			return View::make('emails/forgotSent', ['email' => $this->email]);
 		} else {
 			// View::make('users/forgot', ['error', 'Could not send email.  Are your sure your registered? ']);
-			return 'no user with that email';
+			return "No record for $this->email. Please " . link_to('users/create', 'register');
 		}
 	}
 
