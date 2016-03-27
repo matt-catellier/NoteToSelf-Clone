@@ -1,5 +1,11 @@
 <?php
 
+// include composer autoload
+require 'vendor/autoload.php';
+
+// import the Intervention Image Manager Class
+use Intervention\Image\ImageManager;
+
 class NotesController extends \BaseController {
 
 	/**
@@ -49,6 +55,16 @@ class NotesController extends \BaseController {
 			$values['websites'] = ['', '', '', '', ''];
 		}
 
+		if(Image::where('user_id', '=', $userID)->exists()) {
+			$images = Image::where('user_id', '=', $userID)->take(4)->get();
+			$paths = array();
+			for($i = 0; $i < count($images); $i++) {
+				$paths[$i] = $images[$i]->path;
+			}
+			$values['images'] = $paths;
+		} else {
+			$values['images'] = ['','','',''];
+		}
 
 		return View::make('notes/index', $values);
 		// return 'Notes';//View::make('notes.index');
@@ -62,10 +78,33 @@ class NotesController extends \BaseController {
 	 */
 	public function store()
 	{
+		// delete checked images
+		if(isset($_POST['delete'])) {
+			$delete = $_POST['delete'];
+			for($i = 0; $i < count($delete); $i++) {
+				Image::where('path', '=', $delete[$i])->delete();
+			}
+		}
+
+		$image = Input::file('images');
+		if($image != null ) {
+			$path = 'uploadedImages/' . Auth::user()->email . '/';
+			$image->move('public/'. $path, $image->getClientOriginalName());
+			Image::create([
+				'user_id'=> Auth::user()->id,
+				'path'=> $path . $image->getClientOriginalName()
+			])->save();
+
+			// return $path . $image->getClientOriginalName();
+		} else {
+			// return 'null';
+		}
+
+
 		$this->saveNotes();
 		$this->saveTbd(); // need to set up the tbd class still
 		$this->saveWebsites();
-		return Redirect::to('notes'); 
+		return Redirect::to('notes');
 		//
 	}
 

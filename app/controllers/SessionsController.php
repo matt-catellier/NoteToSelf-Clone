@@ -14,7 +14,7 @@ class SessionsController extends \BaseController {
 		if(Auth::check()) // if their logged in
 		{
 			// logout and send to login page...
-			return 'You are already logged in?';
+			return Redirect::to('notes');
 		}
 		if(!empty($_REQUEST['r']) && !empty($_REQUEST['e'])) {
 			$email = $_REQUEST['e'];

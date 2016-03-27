@@ -4,13 +4,21 @@
     <title> note to self - notes </title>
 @stop
 
-@section('header')
+@section('headers')
     <script type="text/javascript">
         function openInNew(textbox){
             window.open(textbox.value);
             this.blur();
         }
     </script>
+    <style>
+        .image {
+            height: 200px;
+            display: block;
+            width: auto;
+        }
+
+    </style>
 @stop
 
 @section('header')
@@ -19,7 +27,7 @@
 
 
 @section('notes')
-    {{ Form::open(['action'=>'NotesController@store', 'method'=>'post', 'enctype'=>'miltipart/form-data']) }}
+    {{ Form::open(['action'=>'NotesController@store', 'method'=>'post', 'enctype'=>'miltipart/form-data', 'files'=>'true']) }}
     <h3>notes</h3>
     {{ Form::textarea('notes', $notes, $attributes = array('class'=>'col-sm-12 col-xs-12', 'id'=>'notes')) }}
 @stop
@@ -41,11 +49,19 @@
 @section('images')
     <h3>images</h3>
     <h4> click for full size </h4>
-    {{ Form::file('images') }}
-    <div class="image">
-        <a href="{{ URL::to('images/ghostmatt.jpg') }}" >  {{ HTML::image('images/ghostmatt.jpg',null, $attributes = array('class'=>'col-sm-12 col-xs-12' )) }} </a>
-        {{ Form::checkbox('delete[]', '1', false )}}
-        {{ Form::label('delete[]', 'delete?') }}
+    @if(count($images) <= 4)
+        {{ Form::file('images') }}
+    @else
+        <p> maximum 4 images.</p>
+    @endif
+    <div class="image col-sm-12">
+        @for($i = 0; $i < count($images); $i++)
+            @if($images[$i] != '')
+                <a href="{{ URL::to($images[$i]) }}" class="clearfix" >  {{ HTML::image($images[$i],null, $attributes = array('class'=>'col-sm-8 col-xs-8' )) }} </a>
+                {{ Form::checkbox('delete[]', $images[$i], false, $attributes = array('class'=>'col-sm-1 col-xs-1' ) )}}
+                {{ Form::label('delete[]', 'delete?', $attributes = array('class'=>'col-sm-1 col-xs-1' )) }}
+            @endif
+        @endfor
     </div>
 @stop
 
@@ -56,7 +72,10 @@
 
 @section('save')
     {{ Form::submit('save', $attributes = array('class'=>'col-sm-offset-3 col-sm-6 col-xs-12 btn btn-primary')) }}
+    {{ Form::close() }}
 @stop
-{{ Form::close() }}
+
+
+
 
 

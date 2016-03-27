@@ -124,6 +124,7 @@ return array(
 		'Anhskohbo\NoCaptcha\NoCaptchaServiceProvider', // for captcha
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider', // for auto complete
 		'Way\Generators\GeneratorsServiceProvider', // for way generators
+		 // 'Intervention\Image\ImageServiceProvider'// for image resize
 
 
 	),
@@ -192,6 +193,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+		// 'Image' => 'Intervention\Image\Facades\Image' // for image resize
 
 	),
 
