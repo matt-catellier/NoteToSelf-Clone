@@ -1,7 +1,7 @@
 <?php
 		return array(
-			'secret'  => '6Ldm1RcTAAAAAKTLqxUgILrCFRlxePPFKtztD_2H',
-			'sitekey' => '6Ldm1RcTAAAAAKgl9y6aoRqNpbevpJKFkbkHGmtG',
+			'secret'  => '6LdysQwUAAAAANkC6tvYvTQskjFt67LKt7HpVEYt',
+			'sitekey' => '6LdysQwUAAAAANs-EtFz_tDXIb5ZPVyPjfbgNH06',
 		);
 
 

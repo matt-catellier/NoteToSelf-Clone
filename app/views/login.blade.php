@@ -31,5 +31,7 @@
 <p>{{ Form::submit('Submit!') }}</p>
 {{ Form::close() }}
 
+<p> username - mary@email.com  </p>
+<p> password - password </p>
 </body>
 </html>

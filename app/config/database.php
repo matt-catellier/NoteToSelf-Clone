@@ -56,7 +56,7 @@ return array(
 			'driver'    => 'mysql',
 			'host'      => '127.0.0.1',
 			'database'  => 'note_to_self',
-			'username'  => 'root',
+			'username'  => 'notes_admin',
 			'password'  => 'SQLdolphin657',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
